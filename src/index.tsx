@@ -1,6 +1,11 @@
+// Solves TS2322 error
+// https://github.com/DefinitelyTyped/DefinitelyTyped/issues/3124
+/// <reference types="styled-components/cssprop" />
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';

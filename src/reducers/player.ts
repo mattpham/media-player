@@ -68,13 +68,13 @@ const reducer = produce((draft: PlayerState, action: PlayerActions) => {
     case PlayerActionTypes.SEEK:
       draft.progress = action.payload.value;
       return;
-    case PlayerActionTypes.PLAYER_UPDATE: {
-      const { progress, buffered, duration } = action.payload;
-      progress && (draft.progress = progress);
-      buffered && (draft.buffered = buffered);
-      duration && (draft.duration = duration);
+    case PlayerActionTypes.PROGRESS_UPDATE:
+      draft.progress = action.payload.progress;
+      draft.buffered = action.payload.buffered;
       return;
-    }
+    case PlayerActionTypes.DURATION_UPDATE:
+      draft.duration = action.payload.duration;
+      return;
     case PlayerActionTypes.SET_PLAYBACK_RATE:
       draft.playbackRate = action.payload.rate;
       return;

@@ -28,7 +28,8 @@ export const playerMiddleware: Middleware = (store: MiddlewareAPI) => (
 ) => (action: AnyAction) => {
   switch (action.type) {
     case PlayerActionTypes.SEEK:
-      player.seekTo(action.payload.seek);
+      console.log(action.payload);
+      player.seekTo(action.payload.value, 'fraction');
       break;
     default:
       break;

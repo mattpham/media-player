@@ -74,12 +74,17 @@ interface SetRepeatAction {
     repeat: RepeatType;
   };
 }
-interface PlayerUpdateAction {
-  type: PlayerActionTypes.PLAYER_UPDATE;
+interface ProgressUpdateAction {
+  type: PlayerActionTypes.PROGRESS_UPDATE;
   payload: {
-    progress?: number;
-    buffered?: number;
-    duration?: number;
+    progress: number;
+    buffered: number;
+  };
+}
+interface DurationUpdateAction {
+  type: PlayerActionTypes.DURATION_UPDATE;
+  payload: {
+    duration: number;
   };
 }
 export type PlayerActions =
@@ -93,7 +98,8 @@ export type PlayerActions =
   | ToggleMutedAction
   | ToggleShuffleAction
   | SetRepeatAction
-  | PlayerUpdateAction
+  | ProgressUpdateAction
+  | DurationUpdateAction
   | SetPlaybackRateAction;
 
 export const play = (): PlayAction => ({
@@ -165,21 +171,24 @@ export const setPlaybackRate = (rate: number): SetPlaybackRateAction => ({
   }
 });
 
-export function playerUpdate(
+export function progressUpdate(
   progress: number,
-  buffered: number
-): PlayerUpdateAction;
-export function playerUpdate(duration: number): PlayerUpdateAction;
-export function playerUpdate(
-  progress?: number,
-  buffered?: number,
-  duration?: number
-): PlayerUpdateAction {
+  buffered: number,
+): ProgressUpdateAction {
   return {
-    type: PlayerActionTypes.PLAYER_UPDATE,
+    type: PlayerActionTypes.PROGRESS_UPDATE,
     payload: {
       progress,
-      buffered,
+      buffered
+    }
+  };
+}
+export function durationUpdate(
+  duration: number
+): DurationUpdateAction {
+  return {
+    type: PlayerActionTypes.DURATION_UPDATE,
+    payload: {
       duration
     }
   };

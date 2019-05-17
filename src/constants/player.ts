@@ -34,8 +34,11 @@ export type NEXT = typeof NEXT;
 export const QUEUE = 'QUEUE';
 export type QUEUE = typeof QUEUE;
 
-export const PLAYER_UPDATE = 'PLAYER_UPDATE';
-export type PLAYER_UPDATE = typeof PLAYER_UPDATE;
+export const PROGRESS_UPDATE = 'PROGRESS_UPDATE';
+export type PROGRESS_UPDATE = typeof PROGRESS_UPDATE;
+
+export const DURATION_UPDATE = 'DURATION_UPDATE';
+export type DURATION_UPDATE = typeof DURATION_UPDATE;
 
 export const SET_PLAYBACK_RATE = 'SET_PLAYBACK_RATE';
 export type SET_PLAYBACK_RATE = typeof SET_PLAYBACK_RATE;
